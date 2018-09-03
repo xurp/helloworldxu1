@@ -119,8 +119,8 @@ docker-build:
   #variables:
   #  DOCKER_DRIVER: overlay
   #  DOCKER_HOST: tcp://localhost:2375
-  #services:
-  #- docker:dind
+  services:
+  - docker:dind
   tags:
   - maven
   stage: deploy

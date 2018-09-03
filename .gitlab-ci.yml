@@ -117,7 +117,8 @@ docker-build:
   - yosolo login --username xu_xi --password magicrp65640326
   #- yosolo app create helloworldxu1      
   #only first time
-  - yosolo deploy update -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi
+  - yosolo deploy create -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi
+  #- yosolo deploy update -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi
   
 #docker-build:
 #  image: docker:latest

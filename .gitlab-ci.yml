@@ -115,7 +115,8 @@ docker-build:
   - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
   - docker push registry.paas.workslan/helloworldxu/helloworldxu1
   - yosolo login --username xu_xi --password magicrp65640326
-  - yosolo app create helloworldxu1
+  #- yosolo app create helloworldxu1      
+  #only first time
   - yosolo deploy update -a=helloworldxu1 -e=sh-stm -p=8080 --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi
   
 #docker-build:

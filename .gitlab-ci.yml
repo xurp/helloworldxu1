@@ -26,12 +26,12 @@ stages:
  
   script:
   - echo "Building project with maven"
-  - echo $REGISTRY_PWD
-  - echo ${REGISTRY_PWD}
-  - echo {$REGISTRY_PWD}
-  - echo "$REGISTRY_PWD"
-  - echo '$REGISTRY_PWD'
-  - 'echo $REGISTRY_PWD'
+  - echo %REGISTRY_PWD
+  - echo %{REGISTRY_PWD}
+  - echo {%REGISTRY_PWD}
+  - echo "%REGISTRY_PWD"
+  - echo '%REGISTRY_PWD'
+  - 'echo %REGISTRY_PWD'
   - 'mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile'
 
 

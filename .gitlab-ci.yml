@@ -48,8 +48,8 @@ stages:
   # Of course, it is our duty to actually configure a runner
   # with the tag 'maven' and a working maven installation
   tags:
-  - maven
-  # - magicrp
+  #- maven
+   - magicrp
   image: maven:3.5.2-jdk-8-alpine
   #image: maven:3-jdk-8
 
@@ -106,7 +106,8 @@ docker-build:
   #only:
   #- tags
   tags:
-  - maven
+  #- maven
+  - magicrp
   script:
   - echo "Building"
   - docker build -t helloworldxu1 .

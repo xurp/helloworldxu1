@@ -25,7 +25,8 @@ stages:
   stage: build
  
   script:
-  - echo "Building project with maven"
+  - echo "Building project with maven $REGISTRY_PWD"
+  - echo "Building project with maven %REGISTRY_PWD"
   - echo %REGISTRY_PWD
   - echo %{REGISTRY_PWD}
   - echo {%REGISTRY_PWD}

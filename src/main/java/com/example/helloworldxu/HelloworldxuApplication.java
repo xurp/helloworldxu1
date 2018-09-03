@@ -15,7 +15,6 @@ public class HelloworldxuApplication {
 	
 	 @RequestMapping("/*/")
 	    public String home() {
-	    	System.out.println("home");
-	        return "Hello Docker World";
+	        return "Hello Xu";
 	    }
 }

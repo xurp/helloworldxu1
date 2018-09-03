@@ -115,12 +115,12 @@ maven-package:
 
 
 docker-build:
-  #image: docker:latest
-  #variables:
-  #  DOCKER_DRIVER: overlay
-  #  DOCKER_HOST: tcp://localhost:2375
-  #services:
-  #- docker:dind
+  image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay
+    DOCKER_HOST: tcp://localhost:2375
+  services:
+  - docker:dind
   tags:
   - maven
   stage: deploy

@@ -48,8 +48,8 @@ stages:
   # Of course, it is our duty to actually configure a runner
   # with the tag 'maven' and a working maven installation
   tags:
-  #- maven
-   - magicrp
+  - maven
+  # - magicrp
   image: maven:3.5.2-jdk-8-alpine
   #image: maven:3-jdk-8
 
@@ -112,29 +112,45 @@ maven-package:
 #  - echo "Building docker image"
 #  - docker build -t registry.paas.workslan/jobhere/jobhere-api .
 #  - docker images
-
-
 docker-build:
   image: docker:latest
-  variables:
-    DOCKER_DRIVER: overlay
-    DOCKER_HOST: tcp://localhost:2375
   services:
   - docker:dind
-  tags:
-  - maven
   stage: deploy
+  only:
+  - tags
   script:
-  - echo "Building docker image"
+  - echo "Building"
+  - docker build -t helloworldxu1 .
+  - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1
+  - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
+  - docker push registry.paas.workslan/helloworldxu/helloworldxu1
+  - yosolo login --username xu_xi --password magicrp65640326
+  - yosolo app create helloworldxu1
+  - yosolo deploy update -a=helloworldxu1 -e=sh-stm -p 8080 --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory 1Gi
+
+
+#docker-build:
+#  image: docker:latest
+#  variables:
+#    DOCKER_DRIVER: overlay
+#    DOCKER_HOST: tcp://localhost:2375
+#  services:
+#  - docker:dind
+#  tags:
+#  - maven
+#  stage: deploy
+#  script:
+#  - echo "Building docker image"
   #- docker build -t registry.paas.workslan/jobhere/jobhere-api .
   #- docker images
   
-  - docker build -t helloworldxu1 .
-  - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1
+#  - docker build -t helloworldxu1 .
+#  - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1
   #- docker tag zhangyitong 10.29.139.47:5000/develop/zhangyitong:latest
-  - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
+#  - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
   #- docker login -u ${REGISTRY_NAME} -p ${REGISTRY_PSD} ${REGISTRY_IP}:5000
-  - docker push registry.paas.workslan/helloworldxu/helloworldxu1
+#  - docker push registry.paas.workslan/helloworldxu/helloworldxu1
     
 
  

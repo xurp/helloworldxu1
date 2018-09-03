@@ -97,3 +97,83 @@ maven-test:
 maven-package:
   <<: *maven-project-setup
   <<: *maven-package
+  
+#docker-build:
+#  image: docker:latest
+#  variables:
+#    DOCKER_DRIVER: overlay
+#    DOCKER_HOST: tcp://localhost:2375
+#  services:
+#  - docker:dind
+#  tags:
+#  - maven
+#  stage: deploy
+#  script:
+#  - echo "Building docker image"
+#  - docker build -t registry.paas.workslan/jobhere/jobhere-api .
+#  - docker images
+
+
+docker-build:
+  #image: docker:latest
+  #variables:
+  #  DOCKER_DRIVER: overlay
+  #  DOCKER_HOST: tcp://localhost:2375
+  #services:
+  #- docker:dind
+  tags:
+  - maven
+  stage: deploy
+  script:
+  - echo "Building docker image"
+  #- docker build -t registry.paas.workslan/jobhere/jobhere-api .
+  #- docker images
+  
+  - docker build -t helloworldxu1 .
+  - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1
+  #- docker tag zhangyitong 10.29.139.47:5000/develop/zhangyitong:latest
+  - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
+  #- docker login -u ${REGISTRY_NAME} -p ${REGISTRY_PSD} ${REGISTRY_IP}:5000
+  - docker push registry.paas.workslan/helloworldxu/helloworldxu1
+    
+
+ 
+#stage: imagePush
+ 
+#tags:
+ 
+#- image-push
+ 
+#only:
+ 
+#- develop
+ 
+#dockerRun-zhangyitong:
+ 
+#script:
+ 
+#利用ansible远程部署，其中zhangyitong-dev 映射到要部署机器的ip，“”双引号中内容为远程机器上执行的命令
+ 
+#- ansible zhangyitong-dev -m command -a "docker login -u ${REGISTRY_NAME} -p ${REGISTRY_PSD} ${REGISTRY_IP}:5000" #应用服务器登录注册中心
+ 
+#- ansible zhangyitong-dev -m command -a "docker pull ${REGISTRY_IP}:5000/develop/zhangyitong:latest" #应用服务拉取镜像
+ 
+#- ansible zhangyitong-dev -m copy -a "src=/srv/gitlabci_project/zhangyitong/build-deploy/env_config/zhangyitong_develop dest=/tmp/zhangyitong" #分发docker-compose文件到应用服务器
+ 
+#- ansible zhangyitong-dev -m copy -a "src=/srv/gitlabci_project/zhangyitong/employee-component/target/employee-component.jar dest=/tmp/zhangyitong"
+ 
+#- ansible marketing-dev -m copy -a "src=/srv/gitlabci_project/marketing/build-deploy/rm.sh dest=/tmp/marketing_develop"
+ 
+#- ansible marketing-dev -m command -a "cd /tmp/marketing_develop && chmod u+x rm.sh && ./rm.sh"
+ 
+#- ansible zhangyitong-dev -m command -a "docker-compose -f /tmp/zhangyitong/zhangyitong_develop/docker-compose.yml up -d" #应用服务器运行docker-compose
+ 
+#stage: imageProcess
+ 
+#tags:
+ 
+#- image-push
+ 
+#only:
+ 
+#- develop

@@ -115,7 +115,7 @@ maven-package:
 
 
 docker-build:
-  #image: docker:latest
+  image: docker:latest
   variables:
     DOCKER_DRIVER: overlay
     DOCKER_HOST: tcp://localhost:2375

@@ -103,8 +103,10 @@ docker-build:
   services:
   - docker:dind
   stage: deploy
-  only:
-  - tags
+  #only:
+  #- tags
+  tags:
+  - maven
   script:
   - echo "Building"
   - docker build -t helloworldxu1 .

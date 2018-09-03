@@ -98,20 +98,6 @@ maven-package:
   <<: *maven-project-setup
   <<: *maven-package
   
-#docker-build:
-#  image: docker:latest
-#  variables:
-#    DOCKER_DRIVER: overlay
-#    DOCKER_HOST: tcp://localhost:2375
-#  services:
-#  - docker:dind
-#  tags:
-#  - maven
-#  stage: deploy
-#  script:
-#  - echo "Building docker image"
-#  - docker build -t registry.paas.workslan/jobhere/jobhere-api .
-#  - docker images
 docker-build:
   image: docker:latest
   services:
@@ -128,6 +114,22 @@ docker-build:
   - yosolo login --username xu_xi --password magicrp65640326
   - yosolo app create helloworldxu1
   - yosolo deploy update -a=helloworldxu1 -e=sh-stm -p 8080 --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory 1Gi
+  
+#docker-build:
+#  image: docker:latest
+#  variables:
+#    DOCKER_DRIVER: overlay
+#    DOCKER_HOST: tcp://localhost:2375
+#  services:
+#  - docker:dind
+#  tags:
+#  - maven
+#  stage: deploy
+#  script:
+#  - echo "Building docker image"
+#  - docker build -t registry.paas.workslan/jobhere/jobhere-api .
+#  - docker images
+
 
 
 #docker-build:

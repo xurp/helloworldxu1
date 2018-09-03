@@ -26,6 +26,12 @@ stages:
  
   script:
   - echo "Building project with maven"
+  - echo $REGISTRY_PWD
+  - echo ${REGISTRY_PWD}
+  - echo {$REGISTRY_PWD}
+  - echo "$REGISTRY_PWD"
+  - echo '$REGISTRY_PWD'
+  - 'echo $REGISTRY_PWD'
   - 'mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile'
 
 
@@ -68,16 +74,12 @@ docker-build:
   - magicrp
   script:
   - echo "Building"
-  - echo $PASSPSD
-  - echo "1"
-  - echo ${PASSPSD}
-  - echo "2"
-  - echo "$PASSPSD"
+  
   - docker build -t helloworldxu1 .
   - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1
-  - docker login -u xu_xi -p $PAASPSD  registry.paas.workslan
+  - docker login -u xu_xi -p $REGISTRY_PWD  registry.paas.workslan
   - docker push registry.paas.workslan/helloworldxu/helloworldxu1
-  - yosolo login --username xu_xi --password $PAASPSD
+  - yosolo login --username xu_xi --password $REGISTRY_PWD
   #- yosolo app create helloworldxu1      
   #only first time
   #- yosolo deploy create -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi

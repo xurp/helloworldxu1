@@ -12,5 +12,4 @@ public class HelloworldxuApplication {
 		SpringApplication.run(HelloworldxuApplication.class, args);
 	}
 	
-	 
 }

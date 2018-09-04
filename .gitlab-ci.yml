@@ -69,21 +69,11 @@ docker-build:
   
   - docker build -t helloworldxu1 .
   - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1:0.0.4
-<<<<<<< HEAD
   - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
   - docker push registry.paas.workslan/helloworldxu/helloworldxu1:0.0.4
   - yosolo login --username xu_xi --password magicrp65640326
-=======
-  - docker login -u xu_xi -p   registry.paas.workslan
-  - docker push registry.paas.workslan/helloworldxu/helloworldxu1:0.0.4
-  - yosolo login --username xu_xi --password 
->>>>>>> e6367bfb912c5acc53a8298c220b56dd6a5c3170
+
   #- yosolo app create helloworldxu1      
   #only first time
   #- yosolo deploy create -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1 --requests-memory=1Gi
   - yosolo deploy update -a=helloworldxu1 -e=sh-stm --image=registry.paas.workslan/helloworldxu/helloworldxu1:0.0.4 --requests-memory=1Gi
-<<<<<<< HEAD
-  
-=======
-  
->>>>>>> e6367bfb912c5acc53a8298c220b56dd6a5c3170

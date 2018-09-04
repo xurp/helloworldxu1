@@ -17,7 +17,6 @@ stages:
   #- maven
    - magicrp
   image: maven:3.5.2-jdk-8-alpine
-  #image: maven:3-jdk-8
 
 
 .validate: &validate
@@ -25,14 +24,6 @@ stages:
   stage: build
  
   script:
-  - echo "Building project with maven $REGISTRY_PWD"
-  - echo "Building project with maven %REGISTRY_PWD"
-  - echo %REGISTRY_PWD
-  - echo %{REGISTRY_PWD}
-  - echo {%REGISTRY_PWD}
-  - echo "%REGISTRY_PWD"
-  - echo '%REGISTRY_PWD'
-  - 'echo %REGISTRY_PWD'
   - 'mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile'
 
 

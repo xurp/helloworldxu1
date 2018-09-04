@@ -15,7 +15,7 @@ stages:
 
   tags:
   #- maven
-   - magicrp
+   - magicrp1
   image: maven:3.5.2-jdk-8-alpine
 
 
@@ -69,9 +69,9 @@ docker-build:
   
   - docker build -t helloworldxu1 .
   - docker tag helloworldxu1 registry.paas.workslan/helloworldxu/helloworldxu1:0.0.6
-  - docker login -u xu_xi -p magicrp65640326 registry.paas.workslan
+  - docker login -u xu_xi -p  registry.paas.workslan
   - docker push registry.paas.workslan/helloworldxu/helloworldxu1:0.0.6
-  - yosolo login --username xu_xi --password magicrp65640326
+  - yosolo login --username xu_xi --password 
 
   #- yosolo app create helloworldxu1      
   #only first time

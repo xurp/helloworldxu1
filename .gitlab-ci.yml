@@ -63,7 +63,7 @@ docker-build:
   stage: deploy
   tags:
   #- maven
-  - magicrp
+  - magicrp1
   script:
   - echo "Building"
   

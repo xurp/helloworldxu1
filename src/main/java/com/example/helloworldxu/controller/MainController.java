@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MainController {
 	
 	
-	@GetMapping("/")
+	@GetMapping("/*/")
 	public String index(Model model) {		
 		model.addAttribute("getusername", "rp");		
 		return "index";

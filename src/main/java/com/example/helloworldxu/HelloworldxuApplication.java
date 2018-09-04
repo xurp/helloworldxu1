@@ -15,6 +15,6 @@ public class HelloworldxuApplication {
 	
 	 @RequestMapping("/*/")
 	    public String home() {
-	        return "Hello Xu";
+	        return "Hello Xu 0.03";
 	    }
 }
